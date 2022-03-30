@@ -1,0 +1,123 @@
+1. WAP for searching a number using binary search. Return the index of the num if exists else return -1 
+
+package dsa;
+
+public class binarysearch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int arr[] = {2,5,6,7,48,49,89};
+		
+		int num = 49;
+		
+		int searchindex =  binarysearch(arr,num);
+		System.out.println(searchindex);
+
+	}
+	public  static  int binarysearch(int[] arr, int num) {
+		// TODO Auto-generated method stub
+		int start = 0 ;
+		int end  = arr.length-1;
+		
+		while (start<=end ) {
+		int mid  = (start + end)/2;
+		if(arr[mid] == num) {
+			
+			return mid;
+		}
+		if( num > arr[mid]) {
+			
+			start = mid +1;
+			}
+		else if(num < arr[mid]) {
+			
+			end = mid - 1;
+		}
+		}
+		return -1;
+	}
+
+}
+
+
+
+
+2. Find the cube root of a number using binary search
+
+package dsa;
+
+public class cuberoot {
+
+	public static void main(String[] args) {
+		
+		int num = 64;
+		int cuberoot = findCubeRoot(num);
+		System.out.println(cuberoot);
+	}	
+		
+		private static int findCubeRoot(int num){
+
+			int start=0;
+			int end=num;
+			
+			while(start<=end){
+			    int mid = start+(end-start)/2;
+			    
+			    if(mid*mid*mid==num)
+			         return mid;
+			    
+			    else if(mid*mid*mid>num)
+			            end=mid-1;
+			    else
+			       start=mid+1;             
+			}
+			return -1;
+			}
+			}
+
+
+
+
+3. Find the intersection elements of two sorted arrays
+A[] = { 3,6,8}   B[] ={1,2,3,5,6,90,789}
+Output = 3,6
+
+package dsa;
+
+public class intersection {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr1[]={3,6,8};
+	    int arr2[]={1,2,3,5,6,90,789};
+	     int index=-1;
+	    for(int i=0;i<arr1.length;i++){
+	         index = foundInSecond(arr2,index+1,8,arr1[i]);
+	         if(index!=-1){
+	             System.out.println(arr2[index]);
+	         }
+	    }
+	}
+		private static int foundInSecond(int arr[],int start,int end,int num){
+
+		    while(start<=end){
+		        int mid = (start+end)/2;
+		        if(arr[mid]==num){
+		            return mid;
+		        }
+		        else if(arr[mid]>num){
+		            end=mid-1;
+		        }
+		        else{
+		            start=mid+1;
+		        }
+		    }
+		    return -1;
+		}
+		
+	}
+
+
+
+
