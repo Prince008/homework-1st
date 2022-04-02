@@ -1,4 +1,46 @@
 "1. Finding Missing Number in an array binary search
+package dsa;
+
+public class binarymissingarray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a[]= {1,2,3,4,5,7,8,9};
+		 int missingNum = findmiss(a);
+		 
+		 System.out.println(missingNum );
+		 
+
+	}
+
+	private static int findmiss(int[] a) {
+		// TODO Auto-generated method stub
+		int start= 0;
+		int end = a.length-1;
+		
+		while(start<=end) {
+			int mid =start + (end-start)/2;
+			
+			if(mid == 0) {
+				return mid;
+			}
+			if(a[mid]!=mid && a[mid-1] == mid-1) {
+				return mid;
+			}
+			else if(a[mid] == mid) {
+				start = mid +1;
+			}
+			else {
+			   end = mid-1;
+			}
+			
+		}
+		
+		return a.length;
+	}
+
+}
+
 
 
 
