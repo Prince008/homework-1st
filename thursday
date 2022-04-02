@@ -1,0 +1,135 @@
+"https://www.techiedelight.com/find-number-1s-sorted-binary-array/
+
+package dsa;
+
+public class error {
+	private static int CountOnes(int arr[], int low, int high) 
+		    { 
+		      if (high >= low) 
+		      { 
+		         
+		        int mid = low + (high - low)/2; 
+		  
+		        
+		        if ( (mid == high || arr[mid+1] == 0) && 
+		             (arr[mid] == 1)) 
+		          return mid+1; 
+		  
+		        
+		        if (arr[mid] == 1) 
+		          return CountOnes(arr, (mid + 1), high); 
+		  
+		        
+		        return CountOnes(arr, low, (mid -1)); 
+		      } 
+		      return 0; 
+		    } 
+		  
+		   
+		    public static void main(String args[]) 
+		    { 
+		       
+		       int arr[] = {1, 1, 1, 1,1,1,1, 0, 0, 0}; 
+		       int n = arr.length; 
+		       System.out.println("Count of 1's in given array is " + 
+		                           CountOnes(arr, 0, n-1) ); 
+		    } 
+		} 
+
+
+https://www.techiedelight.com/find-floor-ceil-number-sorted-array/"
+
+
+  
+
+public class Main 
+{ 
+    public static void main(String[] args) 
+    { 
+       int arr[] = { 1, 4, 6, 8, 9 };
+       int x= 5;
+        
+       
+        int ceil  = getCeil(arr,x);
+        
+        System.out.println("Ceil value is "+ceil);
+        
+       
+        int floor=getFloor(arr,x);
+       
+        System.out.println("floor value is "+floor);
+       
+    }
+   
+    public static int getCeil(int[] A, int x)
+    {
+       
+        int left = 0, right = A.length - 1;
+ 
+       
+        int ceil = -1;
+ 
+        
+        while (left <= right)
+        {
+            
+            int mid = (left + right) / 2;
+ 
+            
+            if (A[mid] == x) {
+                return A[mid];
+            }
+ 
+            
+            else if (x < A[mid])
+            {
+                ceil = A[mid];
+                right = mid - 1;
+            }
+ 
+            
+            else 
+            {
+                left = mid + 1;
+            }
+        }
+ 
+        return ceil;
+    }
+ 
+    
+    public static int getFloor(int[] A, int x)
+    {
+        int left = 0, right = A.length - 1;
+ 
+        
+        int floor = -1;
+ 
+       
+        while (left <= right)
+        {
+           
+            int mid = (left + right) / 2;
+ 
+            
+            if (A[mid] == x) 
+            {
+                return A[mid];
+            }
+ 
+            
+            else if (x < A[mid]) {
+                right = mid - 1;
+            }
+ 
+           
+            else {
+                floor = A[mid];
+                left = mid + 1;
+            }
+        }
+        return floor;
+    }
+}
+
+
